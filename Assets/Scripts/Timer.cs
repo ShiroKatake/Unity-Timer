@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     private float timeEnd;
     private bool isTiming;
     private bool isEndless;
+
     public static Timer AddEndlessTimer(GameObject gameObject, string timerName)
 	{
         Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
@@ -17,6 +18,7 @@ public class Timer : MonoBehaviour
         timer.timerName = timerName;
         return timer;
     }
+
     public static Timer AddTimer(GameObject gameObject, string timerName, float timeEnd)
 	{
         Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
