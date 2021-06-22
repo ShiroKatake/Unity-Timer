@@ -11,10 +11,21 @@ public class Timer : MonoBehaviour
     private bool isTiming;
     private bool isEndless;
 
+    public float GetTime { get => timePassed; }
+
+    public static Timer AddStopwatch(GameObject gameObject, string timerName, float timeEnd)
+    {
+        Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
+        timer.isEndless = true;
+        timer.timerName = timerName;
+        timer.timeEnd = timeEnd;
+        return timer;
+    }
+
     public static Timer AddEndlessTimer(GameObject gameObject, string timerName)
 	{
         Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
-        timer.isEndless = true;
+        timer.isEndless = false;
         timer.timerName = timerName;
         return timer;
     }
@@ -37,10 +48,18 @@ public class Timer : MonoBehaviour
             if (!isEndless && timePassed > timeEnd)
 			{
                 timePassed = timeEnd;
-                StopTime();
+                HandleTimeEnd();
             }
         }
     }
+
+    private void HandleTimeEnd()
+	{
+        if (!isEndless)
+            StopTime();
+        if (isEndless)
+            ResetTime();
+	}
 
     public void StartTime()
 	{
