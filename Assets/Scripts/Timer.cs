@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private string timerName;
+    [SerializeField] private float timePassed;
+
+    private float timeEnd;
+    private bool isTiming;
+    private bool isStopwatch;
+    public static Timer AddTimer(GameObject gameObject, string timerName)
+	{
+        Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
+        timer.timerName = timerName;
+        return timer;
+    }
+    public static Timer AddTimer(GameObject gameObject, string timerName, float timeEnd)
+	{
+        Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
+        timer.timerName = timerName;
+        timer.timeEnd = timeEnd;
+        return timer;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
         
     }
