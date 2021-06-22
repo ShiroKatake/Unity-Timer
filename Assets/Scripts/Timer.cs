@@ -9,25 +9,21 @@ public class Timer : MonoBehaviour
 
     private float timeEnd;
     private bool isTiming;
-    private bool isStopwatch;
-    public static Timer AddTimer(GameObject gameObject, string timerName)
+    private bool isEndless;
+    public static Timer AddEndlessTimer(GameObject gameObject, string timerName)
 	{
         Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
+        timer.isEndless = true;
         timer.timerName = timerName;
         return timer;
     }
     public static Timer AddTimer(GameObject gameObject, string timerName, float timeEnd)
 	{
         Timer timer = gameObject.AddComponent(typeof(Timer)) as Timer;
+        timer.isEndless = false;
         timer.timerName = timerName;
         timer.timeEnd = timeEnd;
         return timer;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -36,7 +32,7 @@ public class Timer : MonoBehaviour
         if (isTiming)
 		{
             timePassed += Time.deltaTime;
-            if (!isStopwatch && timePassed > timeEnd)
+            if (!isEndless && timePassed > timeEnd)
                 ResetTime();
         }
     }
