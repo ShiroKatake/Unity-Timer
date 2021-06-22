@@ -10,7 +10,7 @@ public class TimerDemo : MonoBehaviour
 	// Start is called before the first frame update
 	private void Awake()
 	{
-		Timer timer = Timer.AddTimer(gameObject, "", 10f);
+		timer = Timer.AddTimer(gameObject, "", 10f);
 	}
 
 	// Update is called once per frame

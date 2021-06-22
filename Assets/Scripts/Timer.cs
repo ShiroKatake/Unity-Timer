@@ -35,7 +35,10 @@ public class Timer : MonoBehaviour
 		{
             timePassed += Time.deltaTime;
             if (!isEndless && timePassed > timeEnd)
-                ResetTime();
+			{
+                timePassed = timeEnd;
+                StopTime();
+            }
         }
     }
 
