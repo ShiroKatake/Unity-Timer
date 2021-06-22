@@ -40,4 +40,23 @@ public class Timer : MonoBehaviour
                 ResetTime();
         }
     }
+
+    public void StartTime()
+	{
+        if (isTiming)
+            Debug.LogError($"Timer {timerName} is not finished yet, but you want to start it again. Please call StopTime() before calling StartTime() again.");
+        ResetTime();
+        isTiming = true;
+	}
+
+    public float StopTime()
+	{
+        isTiming = false;
+        return timePassed;
+	}
+
+    public void ResetTime()
+	{
+        timePassed = 0f;
+    }
 }
