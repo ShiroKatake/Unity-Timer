@@ -29,4 +29,15 @@ public class Timer : MonoBehaviour
     {
         
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isTiming)
+		{
+            timePassed += Time.deltaTime;
+            if (!isStopwatch && timePassed > timeEnd)
+                ResetTime();
+        }
+    }
 }
